@@ -7,6 +7,7 @@ import ControlPanelContainer from "./Components/ControlPanel/Container/ControlPa
 import BoardBody from "./Components/Board/Container/Board.js";
 import Store from "./Store/Store.js";
 import React, {Component} from "react";
+import Statistics from "./Components/Statistics/Container/Statistics.js";
 
 
 
@@ -21,6 +22,7 @@ class App extends Component {
         <div className="App">
           <Appbar></Appbar>
           <BoardBody></BoardBody>
+          <Statistics></Statistics>
           <ControlPanelContainer></ControlPanelContainer>
         </div>
       </Provider>

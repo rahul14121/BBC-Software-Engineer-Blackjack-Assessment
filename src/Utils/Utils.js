@@ -1,7 +1,7 @@
 const Shuffle = (array) => {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
-    //While there is still cards to shuffle
+    //While there are still cards to shuffle
     while (0 !== currentIndex) {
 
         //Randomly generates a number for picking the card
@@ -28,5 +28,28 @@ const PrepareCards = (decks) => {
 }
 
 
+const GetCardTotal = (cards) => {
+    var flipAce = false;
+    cards = cards.map((card) => {
+        switch (card) {
+            case 'A':
+                if (flipAce) {
+                    return 1;
+                }
+                flipAce = true;
+                return 11;
+            case 'J':
+            case 'Q':
+            case 'K':
+                return 10;
+            default:
+                return parseInt(card, 10);
+        }
+    });
 
-export { PrepareCards };
+    return cards.reduce((a, b) => a + b, 0);
+}
+
+
+
+export { PrepareCards, GetCardTotal };

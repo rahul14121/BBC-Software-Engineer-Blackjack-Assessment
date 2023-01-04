@@ -1,5 +1,5 @@
 import "./ControlPanel.css";
-import { Restore, Check, PlayArrow } from "@mui/icons-material";
+import { Restore, Check, PlayArrow, Stop } from "@mui/icons-material";
 import { Grid } from "@mui/material";
 import {BottomNavigation} from "@mui/material";
 import {BottomNavigationAction} from "@mui/material";
@@ -20,6 +20,7 @@ class ControlPanel extends Component {
                 <BottomNavigation showLabels>
                     
                     <BottomNavigationAction onClick={startGame} label="Start" icon={<PlayArrow style={{ fontSize: 44 }} />} />
+                    <BottomNavigationAction onClick={loadCards} label="Stand" icon={<Stop style={{ fontSize: 44 }} />} />
                     <BottomNavigationAction onClick={playerHit} label="Hit" icon={<Check style={{ fontSize: 44 }} />} />
                     <BottomNavigationAction onClick={loadCards} label="Reload" icon={<Restore style={{ fontSize: 44 }} />} />
                 </BottomNavigation>

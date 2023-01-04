@@ -1,0 +1,9 @@
+.statistics-body {
+    margin: auto;
+    width: 350px;
+}
+
+.statistics-section {
+    padding: 5px 5px 5px 30px;
+    text-align: left;
+}
