@@ -1,0 +1,15 @@
+.card-body {
+    max-width: 275px;
+    width: 110px;
+    height: 110px;
+    margin: 35px 25px 55px 0;
+    border: 1px solid black;
+}
+
+.card-content {
+    padding: 37px;
+}
+
+.card-number {
+    font-size: 30px;
+}
