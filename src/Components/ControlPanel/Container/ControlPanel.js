@@ -1,5 +1,5 @@
 import ControlPanel from "../Presentation/ControlPanel.js"
-import {drawDealerCards, loadCards, resetCards } from '../../../Actions/ActionCreator.js'
+import {drawDealerCards, loadCards, resetCards, drawPlayerCards } from '../../../Actions/ActionCreator.js'
 import {connect} from 'react-redux';
 
 
@@ -10,11 +10,18 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             
             dispatch(resetCards());
             
+            //For when the dealer draws a card
             dispatch(drawDealerCards());
+
+            //For when the player draws multiple cards
+            dispatch(drawPlayerCards())
+            dispatch(drawPlayerCards())
+        },
+        playerHit: () => dispatch(drawPlayerCards())
             
         }
     }
-}
+
 
 const mapStateToProps = (state, ownProps) => {}
 
