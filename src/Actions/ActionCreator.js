@@ -1,5 +1,5 @@
 import Store from '../Store/Store.js';
-import { PrepareCards } from '../Utils/Utils.js';
+import { PrepareCards, GetCardTotal, GetRoundResults } from '../Utils/Utils.js';
 import ActionType from './ActionTypes.js';
 
 
@@ -23,26 +23,74 @@ const resetCards = () => {
     }
 }
 
-const drawDealerCards = () => {
+const drawDealerCards = (cards) => {
     console.log("card log bug")
-    const cards = Store.getState().cards;
-    console.log(cards)
-    const dealerCard = cards[Math.floor(Math.random() * cards.length)];
+    const index = Math.floor(Math.random() * cards.length);
+    //console.log(cards)
+    const dealerCard = cards[index];
     
     return {
         type: ActionType.addDealerCards,
-        payload: [dealerCard]
+        payload: {
+            card: [dealerCard],
+            position: index
+        }
         
     }
 }
 
-const drawPlayerCards = () => {
-    const cards = Store.getState().cards;
-    const playerCard = cards[Math.floor(Math.random() * cards.length)];
+const drawPlayerCards = (cards) => {
+    const index = Math.floor(Math.random() * cards.length);
+    const playerCard = cards[index];
     return {
         type: ActionType.addPlayerCards,
-        payload: [playerCard]
+        payload: {
+            card: [playerCard],
+            position: index
+        }
     }
 }
 
-export {  resetCards, drawDealerCards, loadCards, drawPlayerCards}
+
+const dealerDrawsSeventeen = (cards, dealerCards) => {
+    var total = 0;
+    var indexes = [];
+
+    while (total < 17) {
+        const index = Math.floor(Math.random() * cards.length);
+        const nextDealerCard = cards[index];
+        indexes.push(index);
+        dealerCards = dealerCards.concat([nextDealerCard]);
+        total = GetCardTotal(dealerCards);
+    }
+
+    return {
+        type: ActionType.dealerDrawsSeventeen,
+        payload: {
+            cards: dealerCards,
+            position: indexes
+        }
+    }
+}
+
+const calculateRoundResult = (dealerSum, playerSum, ) => {
+    return {
+        type: ActionType.calculateRoundResult,
+        payload: {
+            roundEnd: true,
+            result: GetRoundResults(dealerSum, playerSum)
+        }
+    }
+}
+
+const resetRoundSummary = () => {
+    return {
+        type: ActionType.resetRoundSummary,
+        payload: {
+            roundEnd: false,
+            result: ''
+        }
+    }
+}
+
+export {  resetCards, drawDealerCards, loadCards, drawPlayerCards, dealerDrawsSeventeen, calculateRoundResult, resetRoundSummary}

@@ -7,11 +7,21 @@ const cards = (state = [], action) => {
             return action.payload
         case ActionType.addDealerCards:
         case ActionType.addPlayerCards:    
-            const index = state.indexOf(action.payload[0]);
+            var cards = state;
+            const index = action.payload.position;
             if (index > -1) {
-                state.splice(index, 1);
+                cards.splice(index, 1);
             }
-            return state
+            return cards
+        case ActionType.dealerDrawsSeventeen:
+            cards = state;
+            const indexes = action.payload.position;
+            indexes.forEach((index) => {
+                if (index > -1) {
+                    cards.splice(index, 1);
+                }
+            });
+            return cards
         default:
             return state
     }
@@ -20,11 +30,13 @@ const cards = (state = [], action) => {
 const dealerCards = (state = [], action) => {
     switch (action.type) {
         case ActionType.addDealerCards:
-            return state.concat(action.payload)
+            return state.concat(action.payload.card)
         case ActionType.resetCards:
             return action.payload
         case ActionType.loadCards:
             return []
+        case ActionType.dealerDrawsSeventeen:
+            return action.payload.cards
         default:
             return state
     }
@@ -33,7 +45,7 @@ const dealerCards = (state = [], action) => {
 const playerCards = (state = [], action) => {
     switch (action.type) {
         case ActionType.addPlayerCards:
-            return state.concat(action.payload)
+            return state.concat(action.payload.card)
         case ActionType.resetCards:
             return action.payload
         case ActionType.loadCards:
@@ -43,10 +55,22 @@ const playerCards = (state = [], action) => {
     }
 }
 
+const roundResult = (state = { roundEnd: false, result: '' }, action) => {
+    switch (action.type) {
+        case ActionType.calculateRoundResult:
+            return Object.assign({}, action.payload)
+        case ActionType.resetRoundSummary:
+            return Object.assign({}, action.payload)
+        default:
+            return state
+    }
+}
+
 const Reducers = combineReducers({
     cards,
     dealerCards,
-    playerCards
+    playerCards,
+    roundResult
 });
 
 export default Reducers;

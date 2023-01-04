@@ -1,5 +1,6 @@
 import Board from '../Presentation/Board.js';
 import {connect} from 'react-redux';
+import { calculateRoundResult } from '../../../Actions/ActionCreator.js';
 
 const mapStateToProps = (state, ownProps) => {
     console.log(state);
@@ -12,6 +13,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
+    onCalculationRoundResult: (dealerCards, playerCards) => dispatch(calculateRoundResult(dealerCards, playerCards))
 })
 
 const BoardBody = connect(

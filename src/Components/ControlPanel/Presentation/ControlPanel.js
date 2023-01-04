@@ -14,15 +14,18 @@ class ControlPanel extends Component {
     }
 
     render() {
-        const {loadCards, startGame, playerHit} = this.props;
+        const {loadCardsButton, startGameButton, playerHitButton, playerStandButton, roundEnd} = this.props;
         return (
-            <Grid item xs={12} className={'dock-bottom'}>
+            <Grid item xs={12} className={'dock-bottom' + ' ' + 'control-panel'}>
                 <BottomNavigation showLabels>
+
+                    <BottomNavigationAction className={roundEnd ? '' : 'button-disabled'}onClick={startGameButton}label="Start" classes={{label: 'label-font'}} icon={<PlayArrow className={'button-play'} />} />
+                    <BottomNavigationAction className={roundEnd ? 'button-disabled' : ''}onClick={playerStandButton}label="Stand" classes={{label: 'label-font'}} icon={<Stop className={'button-stand'} />} />
+                    <BottomNavigationAction className={roundEnd ? 'button-disabled' : ''}onClick={playerHitButton}label="Hit" classes={{label: 'label-font'}} icon={<Check className={'button-hit'} />} />
+                    <BottomNavigationAction onClick={loadCardsButton} label="Reload" classes={{label: 'label-font'}} icon={<Restore className={'button-reload'} />} />
+
+
                     
-                    <BottomNavigationAction onClick={startGame} label="Start" icon={<PlayArrow style={{ fontSize: 44 }} />} />
-                    <BottomNavigationAction onClick={loadCards} label="Stand" icon={<Stop style={{ fontSize: 44 }} />} />
-                    <BottomNavigationAction onClick={playerHit} label="Hit" icon={<Check style={{ fontSize: 44 }} />} />
-                    <BottomNavigationAction onClick={loadCards} label="Reload" icon={<Restore style={{ fontSize: 44 }} />} />
                 </BottomNavigation>
             </Grid>
         );

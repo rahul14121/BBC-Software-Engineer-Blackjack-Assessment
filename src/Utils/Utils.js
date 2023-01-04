@@ -47,9 +47,34 @@ const GetCardTotal = (cards) => {
         }
     });
 
-    return cards.reduce((a, b) => a + b, 0);
+    var sum = cards.reduce((a, b) => a + b, 0);
+    if (flipAce && sum > 21) {
+        sum -= 10;
+    }
+
+    return sum
+}
+
+const GetRoundResults = (dealerSum, playerSum) => {
+    var result = '';
+
+    if (playerSum > 21 || (dealerSum === 21 && playerSum != 21)) {
+        result = 'Dealer Wins';
+    } else if (dealerSum > 21 || (playerSum === 21 && dealerSum != 21)) {
+        result = 'Player Wins';
+    } else {
+        if (playerSum < dealerSum) {
+            result = 'Dealer Wins';
+        } else if (playerSum > dealerSum) {
+            result = 'Player Wins';
+        } else {
+            result = 'Tie'
+        }
+    }
+
+    return result;
 }
 
 
 
-export { PrepareCards, GetCardTotal };
+export { PrepareCards, GetCardTotal, GetRoundResults };

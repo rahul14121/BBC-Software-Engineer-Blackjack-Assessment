@@ -5,7 +5,8 @@ import { Paper } from "@mui/material";
 class Statistics extends Component {
 
     render() {
-        const { display, playerTotal, dealerTotal, roundWinner } = this.props;
+        const { display, playerTotal, dealerTotal, roundResult } = this.props;
+        const { roundEnd, result} = roundResult;
 
         return (
             <div>
@@ -13,7 +14,7 @@ class Statistics extends Component {
                     <div className={'statistics-section'}>
                         <p>Dealer score: {dealerTotal}</p>
                         <p>Player score: {playerTotal}</p>
-                        <p>Winner: <b>{roundWinner}</b></p>
+                        <p>Winner: <b>{roundEnd ? result + '': ''}</b></p>
                     </div>
                 </Paper>
             </div>

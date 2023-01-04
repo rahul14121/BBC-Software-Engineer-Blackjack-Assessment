@@ -9,8 +9,10 @@
 
 .board-wrapper {
     display: inline-block;
+    margin-top: 35px;
 }
 
 .player-panel {
     display: flex;
+    justify-content: center;
 }

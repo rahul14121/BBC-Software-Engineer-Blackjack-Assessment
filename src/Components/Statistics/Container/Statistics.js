@@ -5,11 +5,12 @@ import {GetCardTotal} from "../../../Utils/Utils.js"
 const mapStateToProps = (state, ownProps) => {
     const playerSum = GetCardTotal(state.playerCards);
     const dealerSum = GetCardTotal(state.dealerCards);
+    const roundResult = state.roundResult;
 
     return {
         ...ownProps,
         display: state.dealerCards.length === 0 ? 'none' : 'block',
-        roundWinner: 'Not Decided Yet',
+        roundResult: roundResult,
         dealerTotal: dealerSum,
         playerTotal: playerSum
        
