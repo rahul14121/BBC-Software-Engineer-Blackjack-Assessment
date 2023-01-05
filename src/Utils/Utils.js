@@ -1,3 +1,8 @@
+/**
+ * It takes an array and returns a shuffled version of the array.
+ * @param array - The array of cards that you want to shuffle
+ * @returns The array is being returned.
+ */
 const Shuffle = (array) => {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -17,6 +22,11 @@ const Shuffle = (array) => {
     return array;
 }
 
+/**
+ * It takes a number of decks, and returns an array of cards.
+ * @param decks - The number of decks you want to use.
+ * @returns An array of shuffled cards.
+ */
 const PrepareCards = (decks) => {
     var base = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
     var cards = [];
@@ -28,6 +38,11 @@ const PrepareCards = (decks) => {
 }
 
 
+/**
+ * It takes an array of cards, and returns the total value of the cards.
+ * @param cards - an array of strings representing the cards in the hand.
+ * @returns The total value of the cards in the hand.
+ */
 const GetCardTotal = (cards) => {
     var flipAce = false;
     cards = cards.map((card) => {
@@ -55,6 +70,16 @@ const GetCardTotal = (cards) => {
     return sum
 }
 
+/**
+ * If the player's sum is greater than 21, or the dealer's sum is 21 and the player's sum is not 21,
+ * then the dealer wins. Otherwise, if the dealer's sum is greater than 21, or the player's sum is 21
+ * and the dealer's sum is not 21, then the player wins. Otherwise, if the player's sum is less than
+ * the dealer's sum, then the dealer wins. Otherwise, if the player's sum is greater than the dealer's
+ * sum, then the player wins. Otherwise, it's a tie.
+ * @param dealerSum - The sum of the dealer's cards
+ * @param playerSum - The sum of the player's cards
+ * @returns The result of the round.
+ */
 const GetRoundResults = (dealerSum, playerSum) => {
     var result = '';
 

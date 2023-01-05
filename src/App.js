@@ -15,6 +15,8 @@ import Statistics from "./Components/Statistics/Container/Statistics.js";
 
 
 
+/* The App class is the main component of the application. It renders the Appbar, BoardBody,
+Statistics, and ControlPanelContainer components */
 class App extends Component {
   render() {
     return (

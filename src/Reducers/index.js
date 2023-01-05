@@ -1,6 +1,14 @@
 import { combineReducers } from "redux";
 import ActionType from "../Actions/ActionTypes.js";
 
+/**
+ * If the action type is loadCards, return the payload, if the action type is addDealerCards or
+ * addPlayerCards, remove the card from the array, if the action type is dealerDrawsSeventeen, remove
+ * the cards from the array.
+ * @param [state] - [], action: {type: "loadCards", payload: Array(52)}
+ * @param action - {
+ * @returns The state of the cards.
+ */
 const cards = (state = [], action) => {
     switch (action.type) {
         case ActionType.loadCards:
@@ -27,6 +35,15 @@ const cards = (state = [], action) => {
     }
 }
 
+/**
+ * If the action type is addDealerCards, then return the state concatenated with the action payload
+ * card. If the action type is resetCards, then return the action payload. If the action type is
+ * loadCards, then return an empty array. If the action type is dealerDrawsSeventeen, then return the
+ * action payload cards. Otherwise, return the state.
+ * @param [state] - the current state of the reducer
+ * @param action - {type: "addDealerCards", payload: {card: {suit: "Spades", value: "Ace"}}}
+ * @returns The dealerCards array is being returned.
+ */
 const dealerCards = (state = [], action) => {
     switch (action.type) {
         case ActionType.addDealerCards:
@@ -42,6 +59,14 @@ const dealerCards = (state = [], action) => {
     }
 }
 
+/**
+ * If the action type is addPlayerCards, then add the card to the state. If the action type is
+ * resetCards, then reset the state to the payload. If the action type is loadCards, then return an
+ * empty array. Otherwise, return the state.
+ * @param [state] - the current state of the store
+ * @param action - {
+ * @returns The state is being returned.
+ */
 const playerCards = (state = [], action) => {
     switch (action.type) {
         case ActionType.addPlayerCards:
@@ -55,6 +80,13 @@ const playerCards = (state = [], action) => {
     }
 }
 
+/**
+ * It returns a new object with the same properties as the previous state, but with the value of the
+ * property "result" set to the value of the property "result" of the action.payload object.
+ * @param [state] - { roundEnd: false, result: '' }
+ * @param action - {type: "calculateRoundResult", payload: {roundEnd: true, result: "You win!"}}
+ * @returns The reducer is returning the state.
+ */
 const roundResult = (state = { roundEnd: false, result: '' }, action) => {
     switch (action.type) {
         case ActionType.calculateRoundResult:
@@ -66,6 +98,7 @@ const roundResult = (state = { roundEnd: false, result: '' }, action) => {
     }
 }
 
+/* Combining the reducers into one reducer. */
 const Reducers = combineReducers({
     cards,
     dealerCards,

@@ -1,3 +1,4 @@
+/* A constant that is an object with keys and values. */
 const ActionType = {
     loadCards: 'LOAD_CARDS',
     addDealerCards: 'ADD_DEALER_CARDS',

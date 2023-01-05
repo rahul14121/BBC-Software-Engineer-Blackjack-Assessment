@@ -4,6 +4,7 @@ import React, {Component} from 'react';
 import {Typography} from "@mui/material";
 import {Toolbar} from "@mui/material";
 
+/* This class is a React component that renders an AppBar component from the Material-UI library. */
 class Appbar extends Component {
 
     render() {
