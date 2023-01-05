@@ -9,7 +9,7 @@ class Appbar extends Component {
 
     render() {
         return (
-            <AppBar className="AppHeadingBar" position="static">
+            <AppBar className="app-header" position="static">
                 <Toolbar>
                     <Typography variant="h5" color="inherit">
                         Blackjack Game

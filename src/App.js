@@ -7,7 +7,9 @@ import ControlPanelContainer from "./Components/ControlPanel/Container/ControlPa
 import BoardBody from "./Components/Board/Container/Board.js";
 import Store from "./Store/Store.js";
 import React, {Component} from "react";
-import Statistics from "./Components/Statistics/Container/Statistics.js";
+import Summary from "./Components/Summary/Container/Summary.js";
+import WelcomeMessage from "./Components/WelcomeMessage/Presentation/WelcomeMessage.js";
+import StatisticsContainer from "./Components/Statistics/Container/Statistics.js";
 
 
 
@@ -15,21 +17,44 @@ import Statistics from "./Components/Statistics/Container/Statistics.js";
 
 
 
-/* The App class is the main component of the application. It renders the Appbar, BoardBody,
-Statistics, and ControlPanelContainer components */
+/* The App class is the main component of the application. It renders the Appbar, WelcomeMessage,
+BoardBody, Summary, ControlPanelContainer, and StatisticsContainer components */
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { init: true };
+  }
+  
+  startGame = () => {
+    this.setState((state, props) => {
+        return { init: false };
+    });
+  }
+  
   render() {
-    return (
-      <Provider store={Store}>
-        <div className="App">
-          <Appbar></Appbar>
-          <BoardBody></BoardBody>
-          <Statistics></Statistics>
-          <ControlPanelContainer></ControlPanelContainer>
+    const { init } = this.state;
+  
+    const blackjack = (
+        <div className={'center-panel'}>
+          <div className={'center-panel-content'}>
+            <BoardBody></BoardBody>
+            <Summary></Summary>
+            <ControlPanelContainer></ControlPanelContainer>
+            <StatisticsContainer></StatisticsContainer>
+            </div>
         </div>
-      </Provider>
+    );
+  
+    return (
+        <Provider store={Store}>
+            <div className='App'>
+                <Appbar></Appbar>
+                {init ? <WelcomeMessage onStartClick={this.startGame} open={init} /> : blackjack}
+            </div>
+        </Provider>
     );
   }
 }
 
 export default App;
+

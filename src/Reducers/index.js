@@ -98,12 +98,43 @@ const roundResult = (state = { roundEnd: false, result: '' }, action) => {
     }
 }
 
+/**
+ * If the action type is updateStatistics, then return a new state object with the dealerWinCount,
+ * playerWinCount, tieCount, and remainingCards properties updated based on the roundResult and
+ * remainingCards properties of the action payload
+ * @param [state] - the current state of the store
+ * @param action - {
+ * @returns The state is being returned.
+ */
+const statistics = (state = { dealerWinCount: 0, playerWinCount: 0, tieCount: 0, remainingCards: 0 }, action) => {
+    switch (action.type) {
+        case ActionType.updateStatistics:
+            var { roundResult, remainingCards } = action.payload;
+            return {
+                dealerWinCount: roundResult === 'Dealer Wins' ? ++state.dealerWinCount : state.dealerWinCount,
+                playerWinCount: roundResult === 'Player Wins' ? ++state.playerWinCount : state.playerWinCount,
+                tieCount: roundResult === 'Tie' ? ++state.tieCount : state.tieCount,
+                remainingCards: remainingCards
+            };
+        case ActionType.resetStatistics:
+            return {
+                dealerWinCount: 0,
+                playerWinCount: 0,
+                tieCount: 0,
+                remainingCards: action.payload.remainingCards
+            }
+        default:
+            return state
+    }
+}
+
 /* Combining the reducers into one reducer. */
 const Reducers = combineReducers({
     cards,
     dealerCards,
     playerCards,
-    roundResult
+    roundResult,
+    statistics
 });
 
 export default Reducers;

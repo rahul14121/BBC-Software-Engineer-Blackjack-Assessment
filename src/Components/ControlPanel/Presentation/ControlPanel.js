@@ -31,16 +31,18 @@ The BottomNavigationAction components have classes props that are used to style 
 class ControlPanel extends Component {
    
     componentDidMount() {
-        this.props.loadCards();
+        const { loadCards, cards } = this.props;
+        loadCards(cards);
     }
 
     render() {
-        const {loadCardsButton, startGameButton, playerHitButton, playerStandButton, roundEnd} = this.props;
+        const {loadCardsButton, startGameButton, playerHitButton, playerStandButton, roundResult} = this.props;
+        const roundEnd = roundResult.roundEnd;
         return (
-            <Grid item xs={12} className={'dock-bottom' + ' ' + 'control-panel'}>
-                <BottomNavigation showLabels>
+            <Grid item xs={12} className={'control-panel'}>
+                <BottomNavigation className={'control-panel-body'}showLabels>
 
-                    <BottomNavigationAction className={roundEnd ? '' : 'button-disabled'}onClick={startGameButton}label="Start" classes={{label: 'label-font'}} icon={<PlayArrow className={'button-play'} />} />
+                    <BottomNavigationAction className={roundEnd ? '' : 'button-disabled'}onClick={startGameButton}label="New Game" classes={{label: 'label-font'}} icon={<PlayArrow className={'button-play'} />} />
                     <BottomNavigationAction className={roundEnd ? 'button-disabled' : ''}onClick={playerStandButton}label="Stand" classes={{label: 'label-font'}} icon={<Stop className={'button-stand'} />} />
                     <BottomNavigationAction className={roundEnd ? 'button-disabled' : ''}onClick={playerHitButton}label="Hit" classes={{label: 'label-font'}} icon={<Check className={'button-hit'} />} />
                     <BottomNavigationAction onClick={loadCardsButton} label="Reload" classes={{label: 'label-font'}} icon={<Restore className={'button-reload'} />} />

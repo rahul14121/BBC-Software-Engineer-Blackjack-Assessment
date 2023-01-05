@@ -38,10 +38,12 @@ const PrepareCards = (decks) => {
 }
 
 
+
 /**
- * It takes an array of cards, and returns the total value of the cards.
- * @param cards - an array of strings representing the cards in the hand.
- * @returns The total value of the cards in the hand.
+ * It takes an array of cards, and returns an object containing the sum of the cards, and a boolean
+ * indicating whether or not the sum contains an ace.
+ * @param cards - an array of strings, each string is a card in the hand
+ * @returns An object with two properties: sum and containAce.
  */
 const GetCardTotal = (cards) => {
     var flipAce = false;
@@ -65,9 +67,16 @@ const GetCardTotal = (cards) => {
     var sum = cards.reduce((a, b) => a + b, 0);
     if (flipAce && sum > 21) {
         sum -= 10;
+        return {
+            sum: sum,
+            containAce: false
+        }
     }
 
-    return sum
+    return {
+        sum: sum,
+        containAce: flipAce
+    }
 }
 
 /**
@@ -83,9 +92,9 @@ const GetCardTotal = (cards) => {
 const GetRoundResults = (dealerSum, playerSum) => {
     var result = '';
 
-    if (playerSum > 21 || (dealerSum === 21 && playerSum != 21)) {
+    if (playerSum > 21 || (dealerSum === 21 && playerSum !== 21)) {
         result = 'Dealer Wins';
-    } else if (dealerSum > 21 || (playerSum === 21 && dealerSum != 21)) {
+    } else if (dealerSum > 21 || (playerSum === 21 && dealerSum !== 21)) {
         result = 'Player Wins';
     } else {
         if (playerSum < dealerSum) {

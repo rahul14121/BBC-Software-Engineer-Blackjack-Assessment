@@ -2,35 +2,32 @@ import Statistics from "../Presentation/Statistics.js"
 import {connect} from "react-redux"
 import {GetCardTotal} from "../../../Utils/Utils.js"
 
+
 /**
- * MapStateToProps is a function that takes in the state and ownProps and returns an object that will
- * be merged with the component's props.
+ * MapStateToProps is a function that takes in the state and ownProps as arguments and returns an
+ * object that contains the state and ownProps.
  * @param state - the state of the store
- * @param ownProps - The props passed to the component
- * @returns The return statement is returning an object.
+ * @param ownProps - The props passed to the component.
  */
-const mapStateToProps = (state, ownProps) => {
-    const playerSum = GetCardTotal(state.playerCards);
-    const dealerSum = GetCardTotal(state.dealerCards);
-    const roundResult = state.roundResult;
-
-    return {
-        ...ownProps,
-        display: state.dealerCards.length === 0 ? 'none' : 'block',
-        roundResult: roundResult,
-        dealerTotal: dealerSum,
-        playerTotal: playerSum
+const mapStateToProps = (state, ownProps) => ({
+    
+    ...ownProps,
+    dealerWinCount: state.statistics.dealerWinCount,
+    playerWinCount: state.statistics.playerWinCount,
+    tieCount: state.statistics.tieCount,
+    remainingCards: state.statistics.remainingCards
        
-    }
-}
+    
+})
+
 
 
 
 /**
- * This function takes a dispatch function as an argument and returns an object that maps the dispatch
- * function to the props of the component.
- * @param dispatch - A function of dispatch method from Redux store. You need this to dispatch actions
- * to the Redux store.
+ * This function takes in a dispatch function and returns an object that contains functions that will
+ * dispatch actions to the store.
+ * @param dispatch - A function of type (action: Action) => any. You don't need to worry about this,
+ * just pass it into connect()
  * @param ownProps - The props passed to the component.
  */
 const mapDispatchToProps = (dispatch, ownProps) => ({

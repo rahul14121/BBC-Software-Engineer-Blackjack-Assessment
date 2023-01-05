@@ -49,3 +49,12 @@
 .control-panel .button-disabled .label-font {
     color: grey;
 }
+
+.control-panel .control-panel-body {
+    height: 70px;
+    margin: auto;
+    width: 500px;
+    margin-top: 2.5%;
+    border: 1px solid;
+    border-radius: 10px;
+}

@@ -30,8 +30,7 @@ const resetCards = () => {
 /**
  * It takes an array of cards, picks one at random, and returns an object with the card and its
  * position in the array.
- * @param cards - [{id: 1, name: "Ace of Spades", value: 11, image:
- * "https://deckofcardsapi.com/static/img/AS.png"},
+ * @param cards - an array of objects
  * @returns An object with a type and a payload.
  */
 const drawDealerCards = (cards) => {
@@ -69,10 +68,11 @@ const drawPlayerCards = (cards) => {
 }
 
 
+
 /**
  * The dealer draws cards until the total is 17 or greater.
  * @param cards - the deck of cards
- * @param dealerCards - [{value: "A", suit: "Spades"}, {value: "A", suit: "Hearts"}]
+ * @param dealerCards - the cards possessed by the dealer
  * @returns An object with a type and a payload.
  */
 const dealerDrawsSeventeen = (cards, dealerCards) => {
@@ -84,7 +84,7 @@ const dealerDrawsSeventeen = (cards, dealerCards) => {
         const nextDealerCard = cards[index];
         indexes.push(index);
         dealerCards = dealerCards.concat([nextDealerCard]);
-        total = GetCardTotal(dealerCards);
+        total = GetCardTotal(dealerCards).sum;
     }
 
     return {
@@ -96,22 +96,25 @@ const dealerDrawsSeventeen = (cards, dealerCards) => {
     }
 }
 
+
 /**
- * It returns an object with a type and a payload, where the payload is an object with two properties,
- * roundEnd and result, where roundEnd is a boolean and result is a string.
+ * If the dealer's sum is 0, return an empty string, otherwise return the result of the GetRoundResults
+ * function.
  * @param dealerSum - the sum of the dealer's cards
  * @param playerSum - the sum of the player's cards
  * @returns An object with a type and a payload.
  */
-const calculateRoundResult = (dealerSum, playerSum, ) => {
+const calculateRoundResult = (dealerSum, playerSum) => {
     return {
         type: ActionType.calculateRoundResult,
         payload: {
             roundEnd: true,
-            result: GetRoundResults(dealerSum, playerSum)
+            result: dealerSum === 0 ? '' : GetRoundResults(dealerSum, playerSum)
         }
     }
 }
+
+
 
 /**
  * It returns an object with a type and a payload. 
@@ -135,4 +138,53 @@ const resetRoundSummary = () => {
     }
 }
 
-export {  resetCards, drawDealerCards, loadCards, drawPlayerCards, dealerDrawsSeventeen, calculateRoundResult, resetRoundSummary}
+/**
+ * It returns an object with a type property and a payload property, where the payload property is an
+ * object with a roundResult property and a remainingCards property.
+ * @param dealerSum - the sum of the dealer's cards
+ * @param playerSum - the sum of the player's cards
+ * @param cards - an array of cards
+ * @returns An object with a type and a payload.
+ */
+const updateStatistics = (dealerSum, playerSum, cards) => {
+    return {
+        type: ActionType.updateStatistics,
+        payload: {
+            roundResult: dealerSum === 0 ? '' : GetRoundResults(dealerSum, playerSum),
+            remainingCards: cards.length
+        }
+    }
+}
+
+/**
+ * This function returns an object with a type property and a payload property.
+ * @param cards - an array of objects, each object has a property called "isFlipped"
+ * @returns An object with a type and a payload.
+ */
+
+const resetStatistics = (cards) => {
+    return {
+        type: ActionType.resetStatistics,
+        payload: {
+            remainingCards: cards.length
+        }
+    }
+}
+
+/**
+ * This function returns an object with a type property and a payload property, where the payload
+ * property is an object with two properties, roundEnd and result, where roundEnd is set to false and
+ * result is set to an empty string.
+ * @returns An object with a type and a payload.
+ */
+const resetRoundEnd = () => {
+    return {
+        type: ActionType.resetRoundEnd,
+        payload: {
+            roundEnd: false,
+            result: ''
+        }
+    }
+}
+
+export {  resetCards, drawDealerCards, loadCards, drawPlayerCards, dealerDrawsSeventeen, calculateRoundResult, resetRoundSummary, updateStatistics, resetStatistics, resetRoundEnd}

@@ -6,7 +6,10 @@ const ActionType = {
     addPlayerCards: 'ADD_PLAYER_CARDS',
     dealerDrawsSeventeen: 'DEALER_DRAWS_SEVENTEEN',
     calculateRoundResult: 'CALCULATE_ROUND_RESULT',
-    resetRoundSummary: 'RESET_ROUND_SUMMARY'
+    resetRoundSummary: 'RESET_ROUND_SUMMARY',
+    updateStatistics: 'UPDATE_STATISTICS',
+    resetStatistics: 'RESET_STATISTICS',
+    resetRoundEnd: 'RESET_ROUND_END'
 }
 
 export default ActionType;

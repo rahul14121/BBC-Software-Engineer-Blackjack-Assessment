@@ -1,5 +1,5 @@
 import ControlPanel from "../Presentation/ControlPanel.js"
-import {drawDealerCards, loadCards, resetCards, drawPlayerCards, dealerDrawsSeventeen, resetRoundSummary } from '../../../Actions/ActionCreator.js'
+import {drawDealerCards, loadCards, resetCards, drawPlayerCards, dealerDrawsSeventeen, resetRoundSummary, resetStatistics, resetRoundEnd } from '../../../Actions/ActionCreator.js'
 import {connect} from 'react-redux';
 
 
@@ -13,7 +13,11 @@ import {connect} from 'react-redux';
  */
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        loadCards: () => dispatch(loadCards()),
+        loadCards: (cards) => {
+            dispatch(loadCards());
+            dispatch(resetStatistics(cards));
+            dispatch(resetRoundEnd());
+        },
         startGame: (cards) => {
             
             dispatch(resetCards());
@@ -41,10 +45,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
  * @param ownProps - the props passed to the component
  */
 const mapStateToProps = (state, ownProps) => ({...ownProps,
-    cards: state.cards,
-    dealerCards: state.dealerCards,
-    playerCards: state.playerCards,
-    roundEnd: state.roundResult.roundEnd})
+    ...state})
 
 /**
  * MergeProps takes the stateProps, dispatchProps, and ownProps and returns an object with the
@@ -78,7 +79,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
      * When the load cards button is clicked, dispatch the loadCards action.
      */
     const loadCardsButton = () => {
-        dispatchProps.loadCards();
+        dispatchProps.loadCards(stateProps.cards);
     }
     
     /**
