@@ -1,8 +1,8 @@
 .card-body {
     max-width: 275px;
     width: 125px;
-    height: 175px;
-    margin: 35px 25px 55px 0;
+    height: 176px;
+    margin: 30px 25px 45px 0;
     border: 1px solid black;
 }
 
@@ -13,3 +13,220 @@
 .card-number {
     font-size: 30px;
 }
+
+.card {
+    background-repeat: no-repeat;
+    background-size: cover;
+    scale: 322%;
+    width: 100%;
+    height: 100%;
+}
+
+.CA {
+    background-image: url("../../../Images/Cards/AC.svg");
+}
+
+.HA {
+    background-image: url("../../../Images/Cards/AH.svg");
+}
+
+.DA {
+    background-image: url("../../../Images/Cards/AD.svg");
+}
+
+.SA {
+    background-image: url("../../../Images/Cards/AS.svg");
+}
+
+.C2 {
+    background-image: url("../../../Images/Cards/2C.svg");
+}
+
+.H2 {
+    background-image: url("../../../Images/Cards/2H.svg");
+}
+
+.D2 {
+    background-image: url("../../../Images/Cards/2D.svg");
+}
+
+.S2 {
+    background-image: url("../../../Images/Cards/2S.svg");
+}
+
+.C3 {
+    background-image: url("../../../Images/Cards/3C.svg");
+}
+
+.H3 {
+    background-image: url("../../../Images/Cards/3H.svg");
+}
+
+.D3 {
+    background-image: url("../../../Images/Cards/3D.svg");
+}
+
+.S3 {
+    background-image: url("../../../Images/Cards/3S.svg");
+}
+
+.C4 {
+    background-image: url("../../../Images/Cards/4C.svg");
+}
+
+.H4 {
+    background-image: url("../../../Images/Cards/4H.svg");
+}
+
+.D4 {
+    background-image: url("../../../Images/Cards/4D.svg");
+}
+
+.S4 {
+    background-image: url("../../../Images/Cards/4S.svg");
+}
+
+.C5 {
+    background-image: url("../../../Images/Cards/5C.svg");
+}
+
+.H5 {
+    background-image: url("../../../Images/Cards/5H.svg");
+}
+
+.D5 {
+    background-image: url("../../../Images/Cards/5D.svg");
+}
+
+.S5 {
+    background-image: url("../../../Images/Cards/5S.svg");
+}
+
+.C6 {
+    background-image: url("../../../Images/Cards/6C.svg");
+}
+
+.H6 {
+    background-image: url("../../../Images/Cards/6H.svg");
+}
+
+.D6 {
+    background-image: url("../../../Images/Cards/6D.svg");
+}
+
+.S6 {
+    background-image: url("../../../Images/Cards/6S.svg");
+}
+
+.C7 {
+    background-image: url("../../../Images/Cards/7C.svg");
+}
+
+.H7 {
+    background-image: url("../../../Images/Cards/7H.svg");
+}
+
+.D7 {
+    background-image: url("../../../Images/Cards/7D.svg");
+}
+
+.S7 {
+    background-image: url("../../../Images/Cards/7S.svg");
+}
+
+.C8 {
+    background-image: url("../../../Images/Cards/8C.svg");
+}
+
+.H8 {
+    background-image: url("../../../Images/Cards/8H.svg");
+}
+
+.D8 {
+    background-image: url("../../../Images/Cards/8D.svg");
+}
+
+.S8 {
+    background-image: url("../../../Images/Cards/8S.svg");
+}
+
+.C9 {
+    background-image: url("../../../Images/Cards/9C.svg");
+}
+
+.H9 {
+    background-image: url("../../../Images/Cards/9H.svg");
+}
+
+.D9 {
+    background-image: url("../../../Images/Cards/9D.svg");
+}
+
+.S9 {
+    background-image: url("../../../Images/Cards/9S.svg");
+}
+
+.C10 {
+    background-image: url("../../../Images/Cards/10C.svg");
+}
+
+.H10 {
+    background-image: url("../../../Images/Cards/10H.svg");
+}
+
+.D10 {
+    background-image: url("../../../Images/Cards/10D.svg");
+}
+
+.S10 {
+    background-image: url("../../../Images/Cards/10S.svg");
+}
+
+.CJ {
+    background-image: url("../../../Images/Cards/JC.svg");
+}
+
+.HJ {
+    background-image: url("../../../Images/Cards/JH.svg");
+}
+
+.DJ {
+    background-image: url("../../../Images/Cards/JD.svg");
+}
+
+.SJ {
+    background-image: url("../../../Images/Cards/JS.svg");
+}
+
+.CQ {
+    background-image: url("../../../Images/Cards/QC.svg");
+}
+
+.HQ {
+    background-image: url("../../../Images/Cards/QH.svg");
+}
+
+.DQ {
+    background-image: url("../../../Images/Cards/QD.svg");
+}
+
+.SQ {
+    background-image: url("../../../Images/Cards/QS.svg");
+}
+
+.CK {
+    background-image: url("../../../Images/Cards/KC.svg");
+}
+
+.HK {
+    background-image: url("../../../Images/Cards/KH.svg");
+}
+
+.DK {
+    background-image: url("../../../Images/Cards/KD.svg");
+}
+
+.SK {
+    background-image: url("../../../Images/Cards/KS.svg");
+}
+

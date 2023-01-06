@@ -109,6 +109,8 @@ const calculateRoundResult = (dealerSum, playerSum) => {
         type: ActionType.calculateRoundResult,
         payload: {
             roundEnd: true,
+            dealerScore: dealerSum,
+            playerScore: playerSum,
             result: dealerSum === 0 ? '' : GetRoundResults(dealerSum, playerSum)
         }
     }

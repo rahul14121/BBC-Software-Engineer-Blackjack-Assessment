@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
     const playerSum = GetCardTotal(state.playerCards);
     const dealerSum = GetCardTotal(state.dealerCards).sum;
     const roundResult = state.roundResult;
-    const playerSumResult = playerSum.containAce ? playerSum.sum - 11 + '/' + playerSum.sum : playerSum.sum
+    const playerSumResult = playerSum.containAce ? playerSum.sum - 10 + '/' + playerSum.sum : playerSum.sum
 
     return {
         ...ownProps,

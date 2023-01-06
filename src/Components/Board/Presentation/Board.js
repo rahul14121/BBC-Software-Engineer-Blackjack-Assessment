@@ -37,7 +37,7 @@ class Board extends Component {
   CreateDealerCards() {
     const { dealerCards } = this.props;
     
-    return dealerCards.map((card) => <Card key={card + Math.random()} number={card}></Card>)
+    return dealerCards.map((card) => <Card key={card.number + Math.random()} card={card}></Card>)
   }
 
   /**
@@ -48,7 +48,7 @@ class Board extends Component {
    */
   CreatePlayerCards() {
     const { playerCards } = this.props;
-    return playerCards.map((card) => <Card key={card + Math.random()} number={card}></Card>)
+    return playerCards.map((card) => <Card key={card.number + Math.random()} card={card}></Card>)
     }
 
  /**

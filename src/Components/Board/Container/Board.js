@@ -12,6 +12,7 @@ import { calculateRoundResult, updateStatistics, drawDealerCards, drawPlayerCard
  */
 const mapStateToProps = (state, ownProps) => {
     console.log(state);
+    console.log(state.updateStatistics);
     return {
         ...ownProps,
         dealerCards: state.dealerCards,
