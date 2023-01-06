@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
     const dealerSum = GetCardTotal(state.dealerCards).sum;
     const roundResult = state.roundResult;
     const playerSumResult = playerSum.containAce ? playerSum.sum - 10 + '/' + playerSum.sum : playerSum.sum
-
+    console.log(state);
     return {
         ...ownProps,
         display: state.dealerCards.length === 0 ? 'none' : 'block',

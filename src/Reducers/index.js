@@ -137,4 +137,9 @@ const Reducers = combineReducers({
     statistics
 });
 
-export default Reducers;
+export {cards,
+dealerCards,
+playerCards,
+roundResult,
+statistics,
+Reducers};

@@ -1,6 +1,7 @@
 import Board from '../Presentation/Board.js';
 import {connect} from 'react-redux';
-import { calculateRoundResult, updateStatistics, drawDealerCards, drawPlayerCards, loadCards, resetStatistics, resetRoundEnd } from '../../../Actions/ActionCreator.js';
+import { calculateRoundResult, updateStatistics, drawDealerCards, drawPlayerCards, loadCards, resetStatistics, resetRoundEnd, scoreCalc } from '../../../Actions/ActionCreator.js';
+import { GetCardTotal } from '../../../Utils/Utils.js';
 
 
 /**
@@ -11,8 +12,9 @@ import { calculateRoundResult, updateStatistics, drawDealerCards, drawPlayerCard
  * @returns The state of the store.
  */
 const mapStateToProps = (state, ownProps) => {
-    console.log(state);
-    console.log(state.updateStatistics);
+    
+    console.log(GetCardTotal(state.playerCards))
+    
     return {
         ...ownProps,
         dealerCards: state.dealerCards,
@@ -33,6 +35,7 @@ const mapStateToProps = (state, ownProps) => {
  * @param ownProps - The props passed to the component
  */
 const mapDispatchToProps = (dispatch, ownProps) => ({
+    onScoreCalc: (dealerCards, playerCards) => dispatch(scoreCalc(dealerCards, playerCards)),
     onCalculationRoundResult: (dealerCards, playerCards) => dispatch(calculateRoundResult(dealerCards, playerCards)),
     onUpdateStatistics: (dealerCards, playerCards, cards) => dispatch(updateStatistics(dealerCards, playerCards, cards)),
     startGame: (cards) => {

@@ -9,7 +9,8 @@ const ActionType = {
     resetRoundSummary: 'RESET_ROUND_SUMMARY',
     updateStatistics: 'UPDATE_STATISTICS',
     resetStatistics: 'RESET_STATISTICS',
-    resetRoundEnd: 'RESET_ROUND_END'
+    resetRoundEnd: 'RESET_ROUND_END',
+    scoreCalc: 'SCORE_CALC'
 }
 
 export default ActionType;

@@ -96,6 +96,23 @@ const dealerDrawsSeventeen = (cards, dealerCards) => {
     }
 }
 
+const scoreCalc = (playerCards, dealerCards) => {
+    var playerScore = 0;
+    var dealerScore = 0;
+
+    const playerSum = GetCardTotal(playerCards);
+    const dealerSum = GetCardTotal(dealerCards).sum;
+    const playerSumResult = playerSum.containAce ? playerSum.sum - 10 + '/' + playerSum.sum : playerSum.sum
+
+    return{
+        type: ActionType.scoreCalc,
+        payload: {
+            playerCurrentScore: playerSumResult,
+            dealerCurrentScore: dealerSum
+        }
+    }
+}
+
 
 /**
  * If the dealer's sum is 0, return an empty string, otherwise return the result of the GetRoundResults
@@ -189,4 +206,4 @@ const resetRoundEnd = () => {
     }
 }
 
-export {  resetCards, drawDealerCards, loadCards, drawPlayerCards, dealerDrawsSeventeen, calculateRoundResult, resetRoundSummary, updateStatistics, resetStatistics, resetRoundEnd}
+export {  resetCards, drawDealerCards, loadCards, drawPlayerCards, dealerDrawsSeventeen, calculateRoundResult, resetRoundSummary, updateStatistics, resetStatistics, resetRoundEnd, scoreCalc}
