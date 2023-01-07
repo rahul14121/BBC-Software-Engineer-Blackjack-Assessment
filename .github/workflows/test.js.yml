@@ -1,8 +1,4 @@
 name: Javascript testing
-defaults:
-  run:
-    
-
 on:
   workflow_dispatch:
 
