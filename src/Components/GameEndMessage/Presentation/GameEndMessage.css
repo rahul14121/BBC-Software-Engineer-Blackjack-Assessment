@@ -37,3 +37,16 @@
 .dialog .start-button button {
     font-size: 20px;
 }
+
+.dialog .submit-button {
+    justify-content: center;
+}
+
+.dialog .submit-button button {
+    font-size: 20px;
+}
+
+.dialog .username-inputbox {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

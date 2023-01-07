@@ -14,6 +14,7 @@ import { GetCardTotal } from '../../../Utils/Utils.js';
 const mapStateToProps = (state, ownProps) => {
     
     console.log(GetCardTotal(state.playerCards))
+    window.playerWinCount = state.statistics.playerWinCount
     
     return {
         ...ownProps,

@@ -9,3 +9,11 @@
     color: white;
   }
 
+  .app-header button {
+    position: absolute;
+    right: 30px;
+    border: 1px solid;
+    border-radius: 15px;
+    z-index: 9999;
+  }
+

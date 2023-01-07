@@ -1,8 +1,8 @@
-import { Fab, Dialog, DialogContent, DialogActions, DialogTitle } from "@mui/material";
+import { Fab, Dialog, DialogContent, DialogActions, DialogTitle, TextField } from "@mui/material";
 import "./GameEndMessage.css";
-import React, {Component} from 'react';
+import React, {Component, createRef} from 'react';
 import StatisticsContainer from "../../Statistics/Container/Statistics";
-
+import uploadDataLeaderboard from "../uploadDataLeaderboard.js";
 
 /* React component that renders a Dialog component from MaterialUI. 
 
@@ -23,8 +23,40 @@ The onReloadCardsButton function calls the reloadCards function.
 The reloadCards function reloads the cards. */
 class GameEndMessage extends Component {
 
+    constructor(props) {
+        super(props)
+        this.usernameInput = createRef();
+        this.state = {
+            username: ""
+        };
+
+    }
+
+    showRefContent = () => {
+        this.setState({
+            username: this.usernameInput.current.value
+        });
+        
+      };
+    
+      handleChange = (e) =>
+        this.setState({
+            username: e.target.value
+        });
+    
+
     render() {
         const {open, onReloadCardsButton} = this.props;
+        const onClickFunctions = (state) => {
+            this.showRefContent();
+            setTimeout(() => {
+                console.log(this.state.username)
+                console.log(window.playerWinCount)
+                uploadDataLeaderboard(this.state.username, window.playerWinCount)
+            }, 0);
+        };
+            
+        
 
         return (
             <div>
@@ -43,6 +75,22 @@ class GameEndMessage extends Component {
                     <Fab variant="extended" onClick={onReloadCardsButton} color="primary">
                     Start a new game
                     </Fab>
+                    </DialogActions>
+                    <TextField className={'username-inputbox'}
+                        required
+                        inputRef={this.usernameInput}
+                        id="usernameInput"
+                        label="Required"
+                        defaultValue="Anonymous"
+                        
+                        margin="normal"
+        />
+
+                    <DialogActions className={'submit-button'}>
+                    <Fab variant="extended" color="primary" onClick={onClickFunctions}>
+                    Submit your score
+                    </Fab>
+
                     </DialogActions>
                 </Dialog>
             </div>
