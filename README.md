@@ -22,7 +22,7 @@ The page will reload when you make changes.
 
 Jest Tests has been implemented for some of the scenarios stated. The tests mock the deck to match what is being asked, and the functions to calculate score, and round status are run on the mock decks.
 
-![Unit Testing Status](images/passingtests.PNG){scale=50%}
+![Unit Testing Status](images/passingtests.PNG)
 
 ### Given I play a game of blackjack, when I am dealt my opening hand, then I have two cards
 
