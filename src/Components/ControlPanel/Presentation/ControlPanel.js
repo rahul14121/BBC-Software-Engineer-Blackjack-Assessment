@@ -43,8 +43,8 @@ class ControlPanel extends Component {
                 <BottomNavigation className={'control-panel-body'}showLabels>
 
                     <BottomNavigationAction className={roundEnd ? '' : 'button-disabled'}onClick={startGameButton}label="New Game" classes={{label: 'label-font'}} icon={<PlayArrow className={'button-play'} />} />
-                    <BottomNavigationAction className={roundEnd ? 'button-disabled' : ''}onClick={playerStandButton}label="Stand" classes={{label: 'label-font'}} icon={<Stop className={'button-stand'} />} />
-                    <BottomNavigationAction className={roundEnd ? 'button-disabled' : ''}onClick={playerHitButton}label="Hit" classes={{label: 'label-font'}} icon={<Check className={'button-hit'} />} />
+                    <BottomNavigationAction className={roundEnd ? 'button-disabled' : ''}onClick={playerStandButton}label="Stand (stop drawing)" classes={{label: 'label-font'}} icon={<Stop className={'button-stand'} />} />
+                    <BottomNavigationAction className={roundEnd ? 'button-disabled' : ''}onClick={playerHitButton}label="Hit (draw)" classes={{label: 'label-font'}} icon={<Check className={'button-hit'} />} />
                     <BottomNavigationAction onClick={loadCardsButton} label="Reload" classes={{label: 'label-font'}} icon={<Restore className={'button-reload'} />} />
 
 

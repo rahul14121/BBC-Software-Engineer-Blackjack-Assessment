@@ -8,7 +8,7 @@ import ActionType from './ActionTypes.js';
  * @returns An object with two properties: type and payload.
  */
 const loadCards = () => {
-    const decks = 6;
+    const decks = 1;
 
     return {
         type: ActionType.loadCards,

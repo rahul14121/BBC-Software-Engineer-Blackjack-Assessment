@@ -7,6 +7,7 @@ import React from 'react'
 import App from './App';
 import { renderWithProviders } from './Utils/testUtils';
 import reducer, {cardsState, dealerCardsState, testState, kingAceScoreState, kingQueenAceScoreState, nineAceAceScoreState, playerCardsState, score21OrBelowValid, score22Bust} from './Utils/testState.js'
+
 import '@testing-library/jest-dom'
 
 test('Welcome message appears and game is rendered after clicking button', () => {
