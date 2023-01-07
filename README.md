@@ -1,6 +1,6 @@
 # BBC-Software-Engineer-Blackjack-Assessment
 
-My repo for the Blackjack game, part of the technical assessment of the BBC Software Engineer Graduate Scheme.
+My repo for the Blackjack game, part of the technical assessment of the BBC Software Engineer Graduate Scheme. [Check it out here!](https://blackjack-game-53624.web.app/)
 
 ## Project description
 
